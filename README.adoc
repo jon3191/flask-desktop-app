@@ -1,0 +1,137 @@
+= flask-desktop-app
+
+A template for creating a simple desktop database application with Python’s _Flask_ web framework.
+
+[CAUTION]
+====
+This template is configured to run only on a local machine (__i.e.__ on __localhost__), using the built-in _Flask_ development web server.
+It does not make use of any authentication, and *should not be exposed to the Internet* (with __Apache__, __etc.__) without first making substantial configuration changes.
+====
+
+== Why?
+
+Using robust and well-maintained tools such as __Python__, __SQLite__, and _SQLAlchemy_ is good way rapidly to create a small desktop database application.
+Making use of _Flask_ and _Flask-Admin_ is a perfect way to create, with minimal effort, a graphical interface for basic ‘CRUD’ (__create__, __read__, __update__, and __delete__) functions.
+And leveraging __SQLAlchemy__’s powerful ORM (‘object-relational mapping’) gives you easy access to your data as Python objects: just add other Python libraries to manipulate, visualize, and otherwise use your data to achieve your goals.
+
+== Getting Started
+
+[IMPORTANT]
+====
+Python, along with its package manager __Pip__, must be installed on your system.
+This will be the case for macOS and any popular modern Linux distribution.
+Python is not installed on _Windows 10_ by default, but can easily be installed in several ways, including:
+
+* from the _Microsoft Store_ (https://www.microsoft.com/en-us/)
+* via the _Anaconda_ distribution (https://docs.anaconda.com/anaconda/install/windows/)
+* via the _Windows Subsystem for Linux_ (__WSL__)
+====
+
+. Move to a directory (folder) in which you want to work, and clone this repository from __GitHub__:
++
+[source,bash]
+====
+git clone https://github.com/???/???.git
+====
+
+. Move into the new project directory:
++
+[source,bash]
+====
+cd db_app_project
+====
+
+. Create and activate a Python virtual environment:
++
+On macOS and Linux:
++
+[source,bash]
+====
+python3 -m venv db_app_env
+source db_app_env/bin/activate
+====
++
+NOTE: On __Windows__, use `py` instead of `python3`.
++
+TIP: Virtual environments allow you to install Python packages just for a particular project, without installing them system-wide (which might interfere with your system tools or other Python projects).
+
+. Install the Python packages:
++
+[source,bash]
+====
+pip install -r requirements.txt
+====
++
+TIP: This installs the required Python packages, such as __Flask__, in the virtual environment.
+
+. Run the example application:
++
+[source,bash]
+====
+python run.py
+====
+
+This will create a SQLite database file called `example_app_01.db`, create some sample records in it, and start the _Flask_ development web server on your system.
+If you then open your browser and go to http://127.0.0.1:5000/ you should the example desktop database application.
+
+image::desktop_database_app.png
+
+== What Next?
+
+To create your own data models, you will need to edit the files `example_app_01/models.py` and `example_app_01/admin.py`.
+The `Author` model (in `models.py`) and its presentation in the Admin (`admin.py`) is very basic, using mostly the default options.
+The `Book` model demonstrates a greater number of Admin options.
+You will also need either:
+
+. to edit the sample data in `example_app_01/data_fixtures.py` to match your new models, or
+. to remove the `recreate_db` function from `data_fixtures.py` and in the file `run.py` comment out the line `add_data_fixtures()` (__i.e.__ add a `#` in front of it).
+
+After doing this, you can simply delete the database file (`example_app_01/example_app_01.db`), and re-run `python run.py` in the terminal.
+This will recreate the database file using your new models.
+
+== Model Migrations
+
+Also included is Flask-Migrate[https://github.com/miguelgrinberg/Flask-Migrate], a _Flask_ extension which is helpful for database transformations when you already have data in your database which you want to keep, but want to make changes to your data models.
+
+Before you can run any _Flask_ or _Flask-Migrate_ commands in the terminal, _Flask_ has to know what your your application’s executable file is.
+Tell it this by exporting the `FLASK_APP` environment variable:
+
+[source,bash]
+----
+export FLASK_APP=run.py
+----
+
+Then you can enable migrations with:
+
+[source,bash]
+----
+flask db init
+----
+
+This will add a `migrations` directory to the application.
+
+NOTE: This will also create the database file if it doesn’t already exist.
+
+You can then generate an initial migration file with:
+
+[source,bash]
+----
+flask db migrate
+----
+
+And apply the migration to the database with:
+
+[source,bash]
+----
+flask db upgrade
+----
+
+[IMPORTANT]
+====
+The migration file will not detect every change you could possibly make to your models.
+In particular, it can’t detect indexes.
+====
+
+You must repeat this `migrate` and `upgrade` command sequence whenever you make any change to the models, to make sure that the database file remains in sync with the models.
+
+The _Flask-Migrate_ documentation is https://flask-migrate.readthedocs.io/[here].
