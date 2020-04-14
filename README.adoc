@@ -74,7 +74,7 @@ python run.py
 This will create a SQLite database file called `example_app_01.db`, create some sample records in it, and start the _Flask_ development web server on your system.
 If you then open your browser and go to http://127.0.0.1:5000/ you should the example desktop database application.
 
-image::desktop_database_app.png
+image::flask_desktop_app.png
 
 == What Next?
 
