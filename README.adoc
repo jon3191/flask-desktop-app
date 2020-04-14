@@ -30,26 +30,26 @@ Python is not installed on _Windows 10_ by default, but can easily be installed 
 . Move to a directory (folder) in which you want to work, and clone this repository from __GitHub__:
 +
 [source,bash]
-====
+----
 git clone https://github.com/jon3191/flask-desktop-app.git
-====
+----
 
 . Move into the new project directory:
 +
 [source,bash]
-====
+----
 cd db_app_project
-====
+----
 
 . Create and activate a Python virtual environment:
 +
 On macOS and Linux:
 +
 [source,bash]
-====
+----
 python3 -m venv db_app_env
 source db_app_env/bin/activate
-====
+----
 +
 NOTE: On __Windows__, use `py` instead of `python3`.
 +
@@ -58,18 +58,18 @@ TIP: Virtual environments allow you to install Python packages just for a partic
 . Install the Python packages:
 +
 [source,bash]
-====
+----
 pip install -r requirements.txt
-====
+----
 +
 TIP: This installs the required Python packages, such as __Flask__, in the virtual environment.
 
 . Run the example application:
 +
 [source,bash]
-====
+----
 python run.py
-====
+----
 
 This will create a SQLite database file called `example_app_01.db`, create some sample records in it, and start the _Flask_ development web server on your system.
 If you then open your browser and go to http://127.0.0.1:5000/ you should the example desktop database application.
