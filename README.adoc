@@ -38,7 +38,7 @@ git clone https://github.com/jon3191/flask-desktop-app.git
 +
 [source,bash]
 ----
-cd db_app_project
+cd flask-desktop-app
 ----
 
 . Create and activate a Python virtual environment:
