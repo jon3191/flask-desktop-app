@@ -10,7 +10,7 @@ It does not make use of any authentication, and *should not be exposed to the In
 
 == Why?
 
-Using robust and well-maintained tools such as __Python__, __SQLite__, and _SQLAlchemy_ is good way rapidly to create a small desktop database application.
+Using robust and well-maintained tools such as __Python__, __SQLite__, and _SQLAlchemy_ is a good way rapidly to create a small desktop database application.
 Making use of _Flask_ and _Flask-Admin_ is a perfect way to create, with minimal effort, a graphical interface for basic ‘CRUD’ (__create__, __read__, __update__, and __delete__) functions.
 And leveraging __SQLAlchemy__’s powerful ORM (‘object-relational mapping’) gives you easy access to your data as Python objects: just add other Python libraries to manipulate, visualize, and otherwise use your data to achieve your goals.
 
@@ -31,7 +31,7 @@ Python is not installed on _Windows 10_ by default, but can easily be installed 
 +
 [source,bash]
 ====
-git clone https://github.com/???/???.git
+git clone https://github.com/jon3191/flask-desktop-app.git
 ====
 
 . Move into the new project directory:
@@ -91,7 +91,7 @@ This will recreate the database file using your new models.
 
 == Model Migrations
 
-Also included is Flask-Migrate[https://github.com/miguelgrinberg/Flask-Migrate], a _Flask_ extension which is helpful for database transformations when you already have data in your database which you want to keep, but want to make changes to your data models.
+Also included is https://github.com/miguelgrinberg/Flask-Migrate[Flask-Migrate], a _Flask_ extension which is helpful for database transformations when you already have data in your database which you want to keep, but want to make changes to your data models.
 
 Before you can run any _Flask_ or _Flask-Migrate_ commands in the terminal, _Flask_ has to know what your your application’s executable file is.
 Tell it this by exporting the `FLASK_APP` environment variable:
